@@ -13,3 +13,8 @@ extern Plugin *plugin;
 struct MyModuleWidget : ModuleWidget {
 	MyModuleWidget();
 };
+
+struct MultWidget : ModuleWidget
+{
+	MultWidget();
+};
