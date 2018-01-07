@@ -16,7 +16,6 @@ void init(rack::Plugin *p) {
 	p->manual = "https://github.com/VCVRack/Tutorial/blob/master/README.md";
 
 	// For each module, specify the ModuleWidget subclass, manufacturer slug (for saving in patches), manufacturer human-readable name, module slug, and module name
-	p->addModel(createModel<MyModuleWidget>("SklarModules", "MyModule", "My Module", OSCILLATOR_TAG));
 	p->addModel(createModel<MultWidget>("SklarModules", "Mult", "Mult", MULTIPLE_TAG));
 
 	// Any other plugin initialization may go here.
