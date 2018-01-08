@@ -42,9 +42,9 @@ void Noise::step(){
     } 
 
     if (trigger.isHigh()) {
-        lights[TRIGGER_LIGHT].setBrightnessSmooth(100);
+        lights[TRIGGER_LIGHT].setBrightness(100);
     } else {
-        lights[TRIGGER_LIGHT].setBrightnessSmooth(0);
+        lights[TRIGGER_LIGHT].setBrightness(0);
     }
 
 }
