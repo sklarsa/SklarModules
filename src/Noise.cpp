@@ -27,9 +27,7 @@ struct Noise : Module {
 
     SchmittTrigger trigger;
 
-    Noise() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
-        trigger.setThresholds(0.0, 0.1);
-    }
+    Noise() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) { }
     void step() override;
     
 };
