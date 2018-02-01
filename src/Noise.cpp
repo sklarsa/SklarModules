@@ -3,39 +3,44 @@
 #include "SklarModules.hpp"
 
 struct Noise : Module {
-    enum ParamIds
-    {
+    enum ParamIds {
+        CLOCK_FREQ_PARAM,
         NUM_PARAMS
     };
-    enum InputIds
-    {
+    enum InputIds {
         CV_INPUT,
         TRIGGER_INPUT,
         NUM_INPUTS
     };
-    enum OutputIds
-    {
+    enum OutputIds {
         NOISE_OUTPUT,
         SH_OUTPUT,
         NUM_OUTPUTS
     };
-    enum LightIds
-    {
+    enum LightIds {
         TRIGGER_LIGHT,
         NUM_LIGHTS
     };
 
     SchmittTrigger trigger;
+    float phase = 0.0;
 
     Noise() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) { }
     void step() override;
+    
     
 };
 
 void Noise::step(){
     int rnd = rand();
+
+    // Calculate random noise and send to noise output
     float val = (float)rnd / (float)RAND_MAX * 5.0;
     outputs[NOISE_OUTPUT].value = val;
+
+    // Calculate internal clock
+    float deltaTime = 1.0 / engineGetSampleRate();
+
 
     if (trigger.process(inputs[TRIGGER_INPUT].value)) {
         outputs[SH_OUTPUT].value = inputs[CV_INPUT].normalize(val);
