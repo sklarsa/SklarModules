@@ -1,6 +1,7 @@
 #include "SklarModules.hpp"
 
-struct Mult : Module {
+struct Mult : Module
+{
     enum ParamIds
     {
         NUM_PARAMS
@@ -32,18 +33,14 @@ struct Mult : Module {
     void step() override;
 };
 
-void Mult::step(){
+void Mult::step()
+{
     float input_a = inputs[INPUT_A].value;
 
-    outputs[OUTPUT_A].value = clampf(input_a, -5.0, 5.0);
-    outputs[OUTPUT_B].value = clampf(input_a, -5.0, 5.0);
-    outputs[OUTPUT_C].value = clampf(input_a, -5.0, 5.0);
-    outputs[OUTPUT_D].value = clampf(input_a, -5.0, 5.0);
-    outputs[OUTPUT_E].value = clampf(input_a, -5.0, 5.0);
-    outputs[OUTPUT_F].value = clampf(input_a, -5.0, 5.0);
-    outputs[OUTPUT_G].value = clampf(input_a, -5.0, 5.0);
-    outputs[OUTPUT_H].value = clampf(input_a, -5.0, 5.0);
-    outputs[OUTPUT_I].value = clampf(input_a, -5.0, 5.0);
+    for (int x = 0; x < NUM_OUTPUTS; x++)
+    {
+        outputs[x].value = clampf(input_a, -5.0, 5.0);
+    }
 }
 
 MultWidget::MultWidget()
@@ -66,13 +63,7 @@ MultWidget::MultWidget()
 
     addInput(createInput<PJ301MPort>(Vec(33, 75), module, Mult::INPUT_A));
 
-    addOutput(createOutput<PJ301MPort>(Vec(33, 125), module, Mult::OUTPUT_A));
-    addOutput(createOutput<PJ301MPort>(Vec(33, 150), module, Mult::OUTPUT_B));
-    addOutput(createOutput<PJ301MPort>(Vec(33, 175), module, Mult::OUTPUT_B));
-    addOutput(createOutput<PJ301MPort>(Vec(33, 200), module, Mult::OUTPUT_B));
-    addOutput(createOutput<PJ301MPort>(Vec(33, 225), module, Mult::OUTPUT_B));
-    addOutput(createOutput<PJ301MPort>(Vec(33, 250), module, Mult::OUTPUT_B));
-    addOutput(createOutput<PJ301MPort>(Vec(33, 275), module, Mult::OUTPUT_B));
-    addOutput(createOutput<PJ301MPort>(Vec(33, 300), module, Mult::OUTPUT_B));
-    addOutput(createOutput<PJ301MPort>(Vec(33, 325), module, Mult::OUTPUT_B));
+    for (int x = 0; x < Mult::NUM_OUTPUTS; x++){
+        addOutput(createOutput<PJ301MPort>(Vec(33, 125 + x * 25), module, x));
+    }
 }
