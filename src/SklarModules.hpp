@@ -18,3 +18,8 @@ struct MultWidget : ModuleWidget
 {
 	MultWidget();
 };
+
+struct NoiseWidget : ModuleWidget
+{
+	NoiseWidget();
+};
