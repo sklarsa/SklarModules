@@ -12,8 +12,8 @@ void init(rack::Plugin *p) {
 	// The ZIP package must only contain one folder, with the name equal to the plugin's slug.
 	p->slug = "SklarModules";
 	p->version = TOSTRING(VERSION);
-	p->website = "https://github.com/VCVRack/Tutorial";
-	p->manual = "https://github.com/VCVRack/Tutorial/blob/master/README.md";
+	p->website = "https://github.com/sklarsa/SklarModules";
+	p->manual = "https://github.com/sklarsa/SklarModules/blob/master/README.md";
 
 	// For each module, specify the ModuleWidget subclass, manufacturer slug (for saving in patches), manufacturer human-readable name, module slug, and module name
 	p->addModel(createModel<MultWidget>("SklarModules", "Mult", "Mult", MULTIPLE_TAG));
