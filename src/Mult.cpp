@@ -39,7 +39,7 @@ void Mult::step()
 
     for (int x = 0; x < NUM_OUTPUTS; x++)
     {
-        outputs[x].value = clampf(input_a, -5.0, 5.0);
+        outputs[x].value = clampf(input_a, -12.0, 12.0);
     }
 }
 
